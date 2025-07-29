@@ -30,7 +30,11 @@ builder.Services.AddSingleton<DiscordSocketClient>(provider =>
     return new DiscordSocketClient(config);
 });
 
+// HttpClient für Web-Requests
+builder.Services.AddHttpClient();
+
 builder.Services.AddHostedService<DiscordService>();
+builder.Services.AddHostedService<LeaguePatchNotesService>();
 
 // Add logging
 builder.Services.AddLogging(logging =>

@@ -1,134 +1,150 @@
-# Akali Bot
+# Akali Bot 🎮
 
-A Discord bot built with .NET 9 and Discord.Net.
+Ein Discord Bot für League of Legends Communities, entwickelt mit .NET 9 und Discord.Net.
 
-## Setup
+![.NET Version](https://img.shields.io/badge/.NET-9.0-blue)
+![Discord.Net](https://img.shields.io/badge/Discord.Net-3.18.0-7289da)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-### 1. Prerequisites
-- .NET 9 SDK
-- A Discord Bot Token (from Discord Developer Portal)
+## 🌟 Features
 
-### 2. Configuration
+- **⚡ Slash Commands** - Moderne Discord-Integration
+- **📰 League Patch Notes** - Automatische Benachrichtigungen bei neuen Patches
+- **🛠️ Admin Tools** - Verwaltungsbefehle für Server-Administratoren
+- **🔒 Sichere Konfiguration** - User Secrets & Environment Variables
+- **🐳 Docker Support** - Einfache Deployment-Optionen
+- **📊 Logging & Monitoring** - Ausführliche Protokollierung
 
-Das Projekt unterstützt verschiedene Konfigurationsmethoden für verschiedene Umgebungen:
+## 🚀 Quick Start
 
-#### 🔧 **Local Development (Empfohlen: User Secrets)**
-
+### Entwicklung
 ```bash
-cd Akali.Core
+# Repository klonen
+git clone https://github.com/ursupportermain/Akali_Bot.git
+cd Akali_Bot/Akali.Core
 
-# Sicher: User Secrets (nicht in Git committed)
-dotnet user-secrets set "Discord:Token" "YOUR_BOT_TOKEN_HERE"
-dotnet user-secrets set "Discord:Guild:Id" "YOUR_GUILD_ID_HERE"
-```
+# Bot Token konfigurieren
+dotnet user-secrets set "Discord:Token" "YOUR_BOT_TOKEN"
+dotnet user-secrets set "Discord:Guild:Id" "YOUR_GUILD_ID"
 
-#### 🚀 **Production Deployment**
+# League Patch Notes Channel (optional)
+dotnet user-secrets set "LeaguePatchNotes:ChannelId" "YOUR_CHANNEL_ID"
 
-**Option 1: Railway**
-- Konfiguriere Environment Variables im Railway Dashboard:
-  - `DISCORD_TOKEN` = your_bot_token
-  - `DISCORD_GUILD_ID` = your_guild_id
-  - `DOTNET_ENVIRONMENT` = Production
-
-**Option 2: GitHub Actions**
-- Setze Repository Secrets unter Settings > Secrets:
-  - `DISCORD_TOKEN` = your_bot_token  
-  - `DISCORD_GUILD_ID` = your_guild_id
-
-**Option 3: Docker Compose (VPS/Self-hosted)**
-```bash
-# Set environment variables
-export DISCORD_TOKEN="your_token"
-export DISCORD_GUILD_ID="your_guild_id"
-
-# Deploy
-docker-compose up -d
-```
-
-#### 🔄 **Konfigurationspriorität:**
-1. **Environment Variables** (Production)
-2. **User Secrets** (Development) 
-3. **appsettings.json** (Fallback/Default)
-
-### 3. Konfigurationsdateien
-
-- `appsettings.json` - Basis-Konfiguration
-- `appsettings.Development.json` - Development-spezifische Einstellungen
-- `Properties/launchSettings.json` - Launch-Profile für verschiedene Umgebungen
-- `.gitignore` - Git-Ignore-Regeln für .NET Projekte
-
-### 4. Running the Bot
-
-#### 🔧 **Development**
-```bash
-# Restore and build
-dotnet restore
-dotnet build
-
-# Run locally
+# Bot starten
 dotnet run
 ```
 
-#### 🚀 **Production**
-See detailed deployment guides:
-- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Complete deployment guide for all platforms
-- **[DOCKER.md](DOCKER.md)** - Docker-specific instructions
-
-**Quick Railway deployment:**
-1. Fork this repo
-2. Connect to Railway  
-3. Set `DISCORD_TOKEN` environment variable
-4. Deploy automatically
-
-**Quick Docker deployment:**
+### Production (Docker)
 ```bash
-export DISCORD_TOKEN="your_token"  # Set your token
+# Environment Variables setzen
+export DISCORD_TOKEN="your_bot_token"
+export DISCORD_GUILD_ID="your_guild_id"
+export LEAGUEPATCHNOTES_CHANNELID="your_channel_id"
+
+# Mit Docker Compose starten
 docker-compose up -d
 ```
 
-## Project Structure
+## 🎮 Commands
 
-- `Program.cs` - Application entry point and service configuration
-- `Services/DiscordService.cs` - Main Discord service handling bot lifecycle
-- `Commands/` - Slash command implementations
-- `Akali.Core.csproj` - Project configuration with user secrets support
-- `appsettings.json` - Base configuration file
-- `appsettings.Development.json` - Development-specific settings
-- `Properties/launchSettings.json` - Launch profiles for different environments
-- `Dockerfile` - Docker container configuration
-- `docker-compose.yml` - Docker compose for production
-- `docker-compose.dev.yml` - Docker compose for development  
-- `railway.json` - Railway deployment configuration
-- `.github/workflows/` - CI/CD pipelines
-- `.gitignore` - Git ignore rules for .NET projects
-- `LICENSE` - MIT License file
-- `DOCKER.md` - Docker deployment guide
-- `DEPLOYMENT.md` - Complete deployment guide
+### Allgemeine Commands
+- `/ping` - Bot-Status überprüfen
 
-## Features
+### League of Legends
+- `/patchnotes status` - Patch Notes Konfiguration anzeigen
+- `/patchnotes setchannel` - Channel für Patch Notes setzen
+- `/patchnotes check` - Manuell auf neue Patches prüfen
 
-- Slash command support
-- Global and guild-specific command registration
-- Proper logging and error handling
-- Background service architecture
-- Secure token management via user secrets
-- Multiple configuration methods (User Secrets, Environment Variables, appsettings)
-- Development and Production profiles
+### Admin Commands (Nur für Administratoren)
+- `/admin test-patchnotes` - Test-Benachrichtigung senden
+- `/admin service-status` - Service-Status anzeigen
 
-## Discord Bot Permissions
+## � Dokumentation
 
-Make sure your Discord bot has the following permissions:
-- Send Messages
-- Use Slash Commands
-- Read Message History
-- View Channels
+Alle detaillierten Anleitungen finden Sie im [`docs/`](docs/) Ordner:
 
-And the following Gateway Intents:
-- Guilds
-- Guild Messages  
-- Message Content
-- Guild Members
+- **[Setup Guide](docs/SETUP_GUIDE.md)** - Schritt-für-Schritt Einrichtung
+- **[League Patch Notes](docs/LEAGUE_PATCH_NOTES.md)** - Patch Notes System
+- **[Docker Deployment](docs/DOCKER.md)** - Docker-spezifische Anweisungen
+- **[Deployment Guide](docs/DEPLOYMENT.md)** - Vollständige Deployment-Anleitung
 
-## License
+## 🏗️ Projektstruktur
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+Akali_Bot/
+├── 📁 Akali.Core/           # Hauptprojekt
+│   ├── 📁 Commands/         # Slash Command Implementierungen
+│   ├── 📁 Services/         # Background Services
+│   └── 📄 Program.cs        # Application Entry Point
+├── 📁 docs/                 # Dokumentation
+├── 📁 .github/workflows/    # CI/CD Pipelines
+├── 🐳 Dockerfile           # Container Configuration
+├── 🐳 docker-compose.yml   # Production Compose
+└── 📄 README.md            # Diese Datei
+```
+
+## 🔧 Entwicklung
+
+### Prerequisites
+- .NET 9 SDK
+- Discord Bot Token ([Discord Developer Portal](https://discord.com/developers/applications))
+
+### Lokale Entwicklung
+```bash
+# Dependencies installieren
+dotnet restore
+
+# Projekt bauen
+dotnet build
+
+# Bot starten (Development Mode)
+dotnet run
+```
+
+### Environment Variables
+```bash
+# Erforderlich
+DISCORD_TOKEN=your_bot_token
+DISCORD_GUILD_ID=your_guild_id
+
+# Optional (League Patch Notes)
+LEAGUEPATCHNOTES_CHANNELID=your_channel_id
+LEAGUEPATCHNOTES_ROLEID=your_role_id
+```
+
+## 📜 Discord Bot Permissions
+
+### Bot Permissions
+- ✅ Send Messages
+- ✅ Use Slash Commands  
+- ✅ Read Message History
+- ✅ View Channels
+- ✅ Embed Links
+
+### Gateway Intents
+- ✅ Guilds
+- ✅ Guild Messages
+- ✅ Message Content
+- ✅ Guild Members
+
+## 🤝 Contributing
+
+1. Fork das Repository
+2. Erstelle einen Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Committe deine Änderungen (`git commit -m 'Add some AmazingFeature'`)
+4. Push zum Branch (`git push origin feature/AmazingFeature`)
+5. Öffne einen Pull Request
+
+## 📄 License
+
+Dieses Projekt steht unter der MIT License - siehe die [LICENSE](LICENSE) Datei für Details.
+
+## 🔗 Links
+
+- [Discord.Net Documentation](https://docs.discordnet.dev/)
+- [.NET 9 Documentation](https://docs.microsoft.com/en-us/dotnet/)
+- [League of Legends Patch Notes](https://www.leagueoflegends.com/de-de/news/tags/patch-notes/)
+
+---
+
+**Entwickelt mit ❤️ für die League of Legends Community**

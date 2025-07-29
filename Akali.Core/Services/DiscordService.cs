@@ -77,7 +77,7 @@ namespace Akali.Core.Services
                 await _interactionService.RegisterCommandsGloballyAsync();
                 logger.LogInformation("Globale Slash-Befehle erfolgreich registriert.");
 
-                var guildIdConfig = configuration["Discord:Guild:Id"];
+                var guildIdConfig = configuration["Discord:Guild"];
                 if (ulong.TryParse(guildIdConfig, out ulong guildId))
                 {
                     await _interactionService.RegisterCommandsToGuildAsync(guildId);
