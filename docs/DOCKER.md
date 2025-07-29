@@ -1,6 +1,11 @@
-# Docker Deployment Guide
+---
+layout: default
+title: Docker
+nav_order: 5
+permalink: /docker/
+---
 
-# Docker Deployment Guide
+# Docker Deployment Guide 🐳
 
 ## Local Development (Recommended: User Secrets)
 

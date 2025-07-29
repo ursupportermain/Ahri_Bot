@@ -1,4 +1,11 @@
-# Deployment Guide
+---
+layout: default
+title: Deployment
+nav_order: 6
+permalink: /deployment/
+---
+
+# Deployment Guide 🚀
 
 ## 🏠 Local Development
 

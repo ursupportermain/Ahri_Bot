@@ -1,0 +1,55 @@
+title: Akali Bot Documentation
+description: Discord Bot für League of Legends Communities
+baseurl: "/Akali_Bot"
+url: "https://ursupportermain.github.io"
+
+# GitHub Pages / Jekyll settings
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+nav_links:
+  - title: Home
+    url: /
+  - title: Setup Guide
+    url: /setup-guide
+  - title: League Patch Notes
+    url: /league-patch-notes
+  - title: Commands
+    url: /commands
+  - title: Docker
+    url: /docker
+  - title: Deployment
+    url: /deployment
+
+# GitHub metadata
+github:
+  repository_url: https://github.com/ursupportermain/Akali_Bot
+  repository_name: Akali_Bot
+  owner_name: ursupportermain
+
+# SEO
+lang: de-DE
+author: ursupportermain
+twitter:
+  username: # Your Twitter username
+  card: summary
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    default_lang: console
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - CHANGELOG-DOCS.md
+  - wiki-setup.md
+  - wiki-home.md

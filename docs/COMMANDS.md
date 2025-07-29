@@ -1,4 +1,11 @@
-# Bot Commands Übersicht
+---
+layout: default
+title: Commands
+nav_order: 4
+permalink: /commands/
+---
+
+# Bot Commands Übersicht ⚡
 
 ## 🎮 Alle verfügbaren Commands
 
