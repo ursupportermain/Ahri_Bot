@@ -65,10 +65,10 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
    cd Akali_Bot
    ```
 
-2. **Configure** environment:
+2. **Set** environment variables:
    ```bash
-   cp .env.example .env
-   nano .env  # Add your secrets
+   export DISCORD_TOKEN="your_discord_bot_token"
+   export DISCORD_GUILD_ID="your_guild_id"
    ```
 
 3. **Deploy**:

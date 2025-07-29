@@ -1,5 +1,7 @@
 # Docker Deployment Guide
 
+# Docker Deployment Guide
+
 ## Local Development (Recommended: User Secrets)
 
 ### Option 1: Native .NET (Recommended for Development)
@@ -20,30 +22,36 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 ## Production Deployment
 
-### Option 1: Docker Compose (VPS/Self-hosted)
+### Option 1: Railway/Heroku/Cloud Platforms
 ```bash
-# Copy and configure environment file
-cp .env.example .env
-nano .env  # Add your production secrets
+# Set environment variables in your platform's dashboard:
+# DISCORD_TOKEN=your_token
+# DISCORD_GUILD_ID=your_guild_id
+# DOTNET_ENVIRONMENT=Production
+
+# Deploy directly from Git repository
+```
+
+### Option 2: Docker with Environment Variables
+```bash
+# Run with environment variables directly
+docker run -d \
+  --name akali-bot \
+  -e DISCORD_TOKEN="your_token" \
+  -e DISCORD_GUILD_ID="your_guild_id" \
+  -e DOTNET_ENVIRONMENT="Production" \
+  --restart unless-stopped \
+  akali-bot:latest
+```
+
+### Option 3: Docker Compose
+```bash
+# Set environment variables in your system or CI/CD
+export DISCORD_TOKEN="your_token"
+export DISCORD_GUILD_ID="your_guild_id"
 
 # Deploy
 docker-compose up -d
-```
-
-### Option 2: Railway Deployment
-```bash
-# Railway will use environment variables from Railway dashboard
-# No .env file needed - configure in Railway web interface:
-# DISCORD_TOKEN=your_token
-# DISCORD_GUILD_ID=your_guild_id
-```
-
-### Option 3: GitHub Actions + Container Registry
-```bash
-# Secrets are configured in GitHub repository settings
-# Under Settings > Secrets and variables > Actions:
-# DISCORD_TOKEN=your_token
-# DISCORD_GUILD_ID=your_guild_id
 ```
 
 ## Environment Variables

@@ -37,8 +37,12 @@ dotnet user-secrets set "Discord:Guild:Id" "YOUR_GUILD_ID_HERE"
 
 **Option 3: Docker Compose (VPS/Self-hosted)**
 ```bash
-cp .env.example .env
-nano .env  # Füge deine Production-Secrets hinzu
+# Set environment variables
+export DISCORD_TOKEN="your_token"
+export DISCORD_GUILD_ID="your_guild_id"
+
+# Deploy
+docker-compose up -d
 ```
 
 #### 🔄 **Konfigurationspriorität:**
@@ -78,7 +82,7 @@ See detailed deployment guides:
 
 **Quick Docker deployment:**
 ```bash
-cp .env.example .env  # Add your token
+export DISCORD_TOKEN="your_token"  # Set your token
 docker-compose up -d
 ```
 

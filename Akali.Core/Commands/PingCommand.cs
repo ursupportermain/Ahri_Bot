@@ -1,11 +1,11 @@
 using Discord;
 using Discord.Interactions;
 
-namespace discord.core.Commands
+namespace Akali.Core.Commands
 {
     public class SlashCommandHandler : InteractionModuleBase<SocketInteractionContext>
     {
-        [SlashCommand("Ping", "Pings the bot to check if it's online")]
+        [SlashCommand("ping", "Pings the bot to check if it's online")]
         public async Task PingAsync()
         {
             var embed = new EmbedBuilder()
