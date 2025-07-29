@@ -24,33 +24,24 @@ Das Projekt unterstützt mehrere Konfigurationsmethoden in folgender Prioritäts
 
 2. Set your Discord bot token using user secrets:
    ```bash
-   dotnet user-secrets set "Discord:Token" "YOUR_BOT_TOKEN_HERE"
+   dotnet user-secrets set "Discord:Token" "TOKEN"
    ```
 
 3. Optional: Ändere die Guild ID:
    ```bash
-   dotnet user-secrets set "Discord:Guild:Id" "YOUR_GUILD_ID_HERE"
+   dotnet user-secrets set "Discord:Guild:Id" "ID"
    ```
 
-#### Methode 2: Appsettings.json (Nicht empfohlen für Production)
+#### Methode 2: Appsettings.json mit secrets
 
 Bearbeite die `appsettings.json` oder `appsettings.Development.json`:
 ```json
 {
   "Discord": {
-    "Token": "YOUR_BOT_TOKEN_HERE",
-    "Guild": {
-      "Id": 123456789012345678
-    }
+    "Token": "TOKEN as secret",
+    "Guild": "ID as secret"
   }
 }
-```
-
-#### Methode 3: Umgebungsvariablen
-
-```bash
-export Discord__Token="YOUR_BOT_TOKEN_HERE"
-export Discord__Guild__Id="123456789012345678"
 ```
 
 ### 3. Konfigurationsdateien
