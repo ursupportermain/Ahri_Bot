@@ -10,39 +10,41 @@ A Discord bot built with .NET 9 and Discord.Net.
 
 ### 2. Configuration
 
-Das Projekt unterstützt mehrere Konfigurationsmethoden in folgender Prioritätsreihenfolge:
-1. User Secrets (empfohlen für Development)
-2. Umgebungsvariablen
-3. appsettings.json Dateien
+Das Projekt unterstützt verschiedene Konfigurationsmethoden für verschiedene Umgebungen:
 
-#### Methode 1: User Secrets (Empfohlen für Development)
+#### 🔧 **Local Development (Empfohlen: User Secrets)**
 
-1. Navigate to the project directory:
-   ```bash
-   cd Akali.Core
-   ```
+```bash
+cd Akali.Core
 
-2. Set your Discord bot token using user secrets:
-   ```bash
-   dotnet user-secrets set "Discord:Token" "TOKEN"
-   ```
-
-3. Optional: Ändere die Guild ID:
-   ```bash
-   dotnet user-secrets set "Discord:Guild:Id" "ID"
-   ```
-
-#### Methode 2: Appsettings.json mit secrets
-
-Bearbeite die `appsettings.json` oder `appsettings.Development.json`:
-```json
-{
-  "Discord": {
-    "Token": "TOKEN as secret",
-    "Guild": "ID as secret"
-  }
-}
+# Sicher: User Secrets (nicht in Git committed)
+dotnet user-secrets set "Discord:Token" "YOUR_BOT_TOKEN_HERE"
+dotnet user-secrets set "Discord:Guild:Id" "YOUR_GUILD_ID_HERE"
 ```
+
+#### 🚀 **Production Deployment**
+
+**Option 1: Railway**
+- Konfiguriere Environment Variables im Railway Dashboard:
+  - `DISCORD_TOKEN` = your_bot_token
+  - `DISCORD_GUILD_ID` = your_guild_id
+  - `DOTNET_ENVIRONMENT` = Production
+
+**Option 2: GitHub Actions**
+- Setze Repository Secrets unter Settings > Secrets:
+  - `DISCORD_TOKEN` = your_bot_token  
+  - `DISCORD_GUILD_ID` = your_guild_id
+
+**Option 3: Docker Compose (VPS/Self-hosted)**
+```bash
+cp .env.example .env
+nano .env  # Füge deine Production-Secrets hinzu
+```
+
+#### 🔄 **Konfigurationspriorität:**
+1. **Environment Variables** (Production)
+2. **User Secrets** (Development) 
+3. **appsettings.json** (Fallback/Default)
 
 ### 3. Konfigurationsdateien
 
@@ -53,35 +55,51 @@ Bearbeite die `appsettings.json` oder `appsettings.Development.json`:
 
 ### 4. Running the Bot
 
-1. Restore dependencies:
-   ```bash
-   dotnet restore
-   ```
+#### 🔧 **Development**
+```bash
+# Restore and build
+dotnet restore
+dotnet build
 
-2. Build the project:
-   ```bash
-   dotnet build
-   ```
+# Run locally
+dotnet run
+```
 
-3. Run the bot:
-   ```bash
-   # Development mode
-   dotnet run
-   
-   # Production mode
-   dotnet run --launch-profile Production
-   ```
+#### 🚀 **Production**
+See detailed deployment guides:
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Complete deployment guide for all platforms
+- **[DOCKER.md](DOCKER.md)** - Docker-specific instructions
+
+**Quick Railway deployment:**
+1. Fork this repo
+2. Connect to Railway  
+3. Set `DISCORD_TOKEN` environment variable
+4. Deploy automatically
+
+**Quick Docker deployment:**
+```bash
+cp .env.example .env  # Add your token
+docker-compose up -d
+```
 
 ## Project Structure
 
 - `Program.cs` - Application entry point and service configuration
 - `Services/DiscordService.cs` - Main Discord service handling bot lifecycle
+- `Commands/` - Slash command implementations
 - `Akali.Core.csproj` - Project configuration with user secrets support
 - `appsettings.json` - Base configuration file
 - `appsettings.Development.json` - Development-specific settings
 - `Properties/launchSettings.json` - Launch profiles for different environments
+- `Dockerfile` - Docker container configuration
+- `docker-compose.yml` - Docker compose for production
+- `docker-compose.dev.yml` - Docker compose for development  
+- `railway.json` - Railway deployment configuration
+- `.github/workflows/` - CI/CD pipelines
 - `.gitignore` - Git ignore rules for .NET projects
 - `LICENSE` - MIT License file
+- `DOCKER.md` - Docker deployment guide
+- `DEPLOYMENT.md` - Complete deployment guide
 
 ## Features
 

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  akali-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: akali-bot-dev
+    restart: "no"
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+      # For development, use user secrets instead of environment variables
+      # User secrets are automatically loaded by the .NET configuration system
+    volumes:
+      # Mount user secrets directory (Windows/Linux compatible)
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - ./logs:/app/logs
+    networks:
+      - akali-dev-network
+    stdin_open: true
+    tty: true
+
+networks:
+  akali-dev-network:
+    driver: bridge

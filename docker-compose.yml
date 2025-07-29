@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  akali-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: akali-bot
+    restart: unless-stopped
+    environment:
+      - DOTNET_ENVIRONMENT=Production
+      # Set these via your hosting provider's environment variables:
+      # DISCORD_TOKEN (required)
+      # DISCORD_GUILD_ID (optional)
+    networks:
+      - akali-network
+    healthcheck:
+      test: ["CMD-SHELL", "dotnet --version || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add a database if needed in the future
+  # database:
+  #   image: postgres:15-alpine
+  #   container_name: akali-db
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_DB: akali_bot
+  #     POSTGRES_USER: akali
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - akali-network
+  #   ports:
+  #     - "5432:5432"
+
+networks:
+  akali-network:
+    driver: bridge
+
+# volumes:
+#   postgres_data:

@@ -326,6 +326,12 @@ FodyWeavers.xsd
 appsettings.*.json
 secrets.json
 
+# Docker & Environment files
+.env
+.env.local
+.env.production
+docker-compose.override.yml
+
 # JetBrains Rider
 .idea/
 *.sln.iml
