@@ -35,6 +35,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddHostedService<DiscordService>();
 builder.Services.AddHostedService<LeaguePatchNotesService>();
+// builder.Services.AddHostedService<VoiceChannelService>(); // Temporarily disabled for Docker build
 
 // Add logging
 builder.Services.AddLogging(logging =>

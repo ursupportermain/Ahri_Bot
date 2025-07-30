@@ -2,7 +2,7 @@ using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using System.Data.SQLite;
+// using System.Data.SQLite; // Temporarily disabled for Docker build
 
 namespace Akali.Core.Commands
 {
@@ -317,194 +317,31 @@ namespace Akali.Core.Commands
             // Environment.Exit(0); // Vorsichtig mit dieser Zeile!
         }
 
+        /*
+        // Voice Commands temporarily disabled for Docker build
         [SlashCommand("voice-stats", "Zeigt Voice Channel Statistiken an")]
         public async Task VoiceStatsAsync()
         {
-            try
-            {
-                using var connection = new SQLiteConnection("Data Source=voice.db");
-                connection.Open();
-
-                // Get active voice channels
-                string activeChannelsQuery = "SELECT COUNT(*) FROM voiceChannel";
-                using var activeCommand = new SQLiteCommand(activeChannelsQuery, connection);
-                var activeChannels = Convert.ToInt32(activeCommand.ExecuteScalar());
-
-                // Get total configured guilds
-                string guildsQuery = "SELECT COUNT(*) FROM guild";
-                using var guildsCommand = new SQLiteCommand(guildsQuery, connection);
-                var configuredGuilds = Convert.ToInt32(guildsCommand.ExecuteScalar());
-
-                // Get user settings count
-                string userSettingsQuery = "SELECT COUNT(*) FROM userSettings";
-                using var userCommand = new SQLiteCommand(userSettingsQuery, connection);
-                var usersWithSettings = Convert.ToInt32(userCommand.ExecuteScalar());
-
-                var embed = new EmbedBuilder()
-                    .WithTitle("📊 Voice Channel Statistiken")
-                    .WithColor(Color.Teal)
-                    .AddField("Aktive Channels", activeChannels, true)
-                    .AddField("Konfigurierte Server", configuredGuilds, true)
-                    .AddField("Benutzer mit Settings", usersWithSettings, true)
-                    .WithTimestamp(DateTimeOffset.Now)
-                    .WithFooter("Voice System Statistiken")
-                    .Build();
-
-                await RespondAsync(embed: embed, ephemeral: true);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error getting voice stats");
-                await RespondAsync("❌ Fehler beim Abrufen der Voice Statistiken.", ephemeral: true);
-            }
+            await RespondAsync("❌ Voice System ist derzeit deaktiviert.", ephemeral: true);
         }
 
         [SlashCommand("voice-cleanup", "Bereinigt verwaiste Voice Channel Einträge")]
         public async Task VoiceCleanupAsync()
         {
-            try
-            {
-                await DeferAsync(ephemeral: true);
-
-                using var connection = new SQLiteConnection("Data Source=voice.db");
-                connection.Open();
-
-                // Get all voice channels from database
-                string query = "SELECT userID, voiceID FROM voiceChannel";
-                using var command = new SQLiteCommand(query, connection);
-                using var reader = command.ExecuteReader();
-
-                var channelsToRemove = new List<ulong>();
-                var validChannels = 0;
-
-                while (reader.Read())
-                {
-                    var channelId = Convert.ToUInt64(reader["voiceID"]);
-                    var channel = Context.Guild.GetVoiceChannel(channelId);
-
-                    if (channel == null)
-                    {
-                        // Channel doesn't exist anymore
-                        channelsToRemove.Add(channelId);
-                    }
-                    else
-                    {
-                        validChannels++;
-                    }
-                }
-
-                reader.Close();
-
-                // Remove orphaned entries
-                foreach (var channelId in channelsToRemove)
-                {
-                    string deleteQuery = "DELETE FROM voiceChannel WHERE voiceID = @channelId";
-                    using var deleteCommand = new SQLiteCommand(deleteQuery, connection);
-                    deleteCommand.Parameters.AddWithValue("@channelId", channelId);
-                    deleteCommand.ExecuteNonQuery();
-                }
-
-                var embed = new EmbedBuilder()
-                    .WithTitle("🧹 Voice Channel Bereinigung")
-                    .WithColor(Color.Orange)
-                    .AddField("Entfernte Einträge", channelsToRemove.Count, true)
-                    .AddField("Gültige Channels", validChannels, true)
-                    .WithTimestamp(DateTimeOffset.Now)
-                    .Build();
-
-                await FollowupAsync(embed: embed, ephemeral: true);
-                _logger.LogInformation("Voice cleanup completed: {RemovedCount} entries removed", channelsToRemove.Count);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error during voice cleanup");
-                await FollowupAsync("❌ Fehler bei der Voice Channel Bereinigung.", ephemeral: true);
-            }
+            await RespondAsync("❌ Voice System ist derzeit deaktiviert.", ephemeral: true);
         }
 
         [SlashCommand("set-voice-limit", "Setzt das Standard Voice Channel Limit für den Server")]
         public async Task SetVoiceLimitAsync([Summary("limit", "Standard Channel Limit (0 = unbegrenzt)")] int limit)
         {
-            if (limit < 0 || limit > 99)
-            {
-                await RespondAsync("❌ Limit muss zwischen 0 und 99 liegen.", ephemeral: true);
-                return;
-            }
-
-            try
-            {
-                using var connection = new SQLiteConnection("Data Source=voice.db");
-                connection.Open();
-
-                string query = @"
-                    INSERT OR REPLACE INTO guildSettings (guildID, defaultChannelName, channelLimit) 
-                    VALUES (
-                        @guildId, 
-                        COALESCE((SELECT defaultChannelName FROM guildSettings WHERE guildID = @guildId), '{username}''s Channel'), 
-                        @limit
-                    )";
-
-                using var command = new SQLiteCommand(query, connection);
-                command.Parameters.AddWithValue("@guildId", Context.Guild.Id);
-                command.Parameters.AddWithValue("@limit", limit);
-                command.ExecuteNonQuery();
-
-                var limitText = limit == 0 ? "unbegrenzt" : limit.ToString();
-                await RespondAsync($"✅ Standard Voice Channel Limit wurde auf **{limitText}** gesetzt!", ephemeral: true);
-                
-                _logger.LogInformation("Voice limit set to {Limit} for guild {Guild} by {User}", 
-                    limit, Context.Guild.Name, Context.User.Username);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error setting voice limit");
-                await RespondAsync("❌ Fehler beim Setzen des Voice Limits.", ephemeral: true);
-            }
+            await RespondAsync("❌ Voice System ist derzeit deaktiviert.", ephemeral: true);
         }
 
         [SlashCommand("force-delete-voice", "Löscht einen Voice Channel gewaltsam")]
         public async Task ForceDeleteVoiceAsync([Summary("channel", "Der zu löschende Voice Channel")] IVoiceChannel channel)
         {
-            try
-            {
-                // Check if it's a temporary voice channel
-                using var connection = new SQLiteConnection("Data Source=voice.db");
-                connection.Open();
-
-                string query = "SELECT userID FROM voiceChannel WHERE voiceID = @channelId";
-                using var command = new SQLiteCommand(query, connection);
-                command.Parameters.AddWithValue("@channelId", channel.Id);
-                var result = command.ExecuteScalar();
-
-                if (result == null)
-                {
-                    await RespondAsync("❌ Dieser Channel ist kein temporärer Voice Channel.", ephemeral: true);
-                    return;
-                }
-
-                var ownerId = Convert.ToUInt64(result);
-                var owner = Context.Guild.GetUser(ownerId);
-
-                // Delete the channel
-                await channel.DeleteAsync();
-
-                // Remove from database
-                string deleteQuery = "DELETE FROM voiceChannel WHERE voiceID = @channelId";
-                using var deleteCommand = new SQLiteCommand(deleteQuery, connection);
-                deleteCommand.Parameters.AddWithValue("@channelId", channel.Id);
-                deleteCommand.ExecuteNonQuery();
-
-                var ownerMention = owner?.Mention ?? $"<@{ownerId}>";
-                await RespondAsync($"✅ Voice Channel von {ownerMention} wurde gelöscht.", ephemeral: true);
-                
-                _logger.LogWarning("Voice channel {ChannelId} force-deleted by admin {User}", 
-                    channel.Id, Context.User.Username);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error force-deleting voice channel");
-                await RespondAsync("❌ Fehler beim Löschen des Voice Channels.", ephemeral: true);
-            }
+            await RespondAsync("❌ Voice System ist derzeit deaktiviert.", ephemeral: true);
         }
+        */
     }
 }
