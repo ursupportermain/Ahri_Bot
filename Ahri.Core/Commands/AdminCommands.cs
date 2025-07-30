@@ -8,6 +8,7 @@ namespace Ahri.Core.Commands
 {
     [Group("admin", "Administrator Befehle")]
     [RequireUserPermission(GuildPermission.Administrator)]
+    [DefaultMemberPermissions(GuildPermission.Administrator)]
     public class AdminCommands : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly ILogger<AdminCommands> _logger;

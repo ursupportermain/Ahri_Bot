@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace Ahri.Core.Commands
 {
     [RequireUserPermission(GuildPermission.Administrator)]
+    [DefaultMemberPermissions(GuildPermission.Administrator)]
     public class LeaguePatchNotesCommands : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly IConfiguration _configuration;
