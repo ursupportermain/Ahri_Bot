@@ -13,10 +13,14 @@ jobs:
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d "{\"embeds\":[{
-                     \"title\": \"Neuer Release: ${{ github.event.release.name }}\",
-                     \"url\": \"${{ github.event.release.html_url }}\",
-                     \"description\": \"${{ github.event.release.body }}\",
-                     \"color\": 3066993
-                   }]}" \
-               $DISCORD_WEBHOOK_URL
+               -d $'{
+                 "embeds":[
+                   {
+                     "title":"Neuer Release: '"${{ github.event.release.name }}"'",
+                     "url":"'"${{ github.event.release.html_url }}"'",
+                     "description":"more Admin Command\n\nVoice Channel Service",
+                     "color":3066993
+                   }
+                 ]
+               }' \
+               "$DISCORD_WEBHOOK_URL"
