@@ -4,7 +4,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
 // using System.Data.SQLite; // Temporarily disabled for Docker build
 
-namespace Akali.Core.Commands
+namespace Ahri.Core.Commands
 {
     [Group("admin", "Administrator Befehle")]
     [RequireUserPermission(GuildPermission.Administrator)]
@@ -50,7 +50,7 @@ namespace Akali.Core.Commands
                 .AddField("Überprüfungsintervall", "30 Minuten", true)
                 .AddField("Letzte Überprüfung", "Wird automatisch durchgeführt", false)
                 .WithTimestamp(DateTimeOffset.Now)
-                .WithFooter("Akali Bot Services")
+                .WithFooter("Ahri Bot Services")
                 .Build();
 
             await RespondAsync(embed: embed);
@@ -214,7 +214,7 @@ namespace Akali.Core.Commands
             var uptime = DateTimeOffset.Now - System.Diagnostics.Process.GetCurrentProcess().StartTime;
 
             var embed = new EmbedBuilder()
-                .WithTitle("🤖 Akali Bot Statistiken")
+                .WithTitle("🤖 Ahri Bot Statistiken")
                 .WithColor(Color.Teal)
                 .AddField("Server", guilds, true)
                 .AddField("Benutzer", users, true)

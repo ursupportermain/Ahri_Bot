@@ -63,7 +63,7 @@ git push origin main
 ```
 
 ### Schritt 3: Website besuchen
-- **URL:** `https://ursupportermain.github.io/Akali_Bot/`
+- **URL:** `https://ursupportermain.github.io/Ahri_Bot/`
 - Build-Status in Actions Tab überprüfen
 
 ## 📁 Finale Struktur
@@ -102,7 +102,7 @@ docs/
 cd docs
 bundle install
 bundle exec jekyll serve --watch
-# → http://localhost:4000/Akali_Bot/
+# → http://localhost:4000/Ahri_Bot/
 ```
 
 Die GitHub Pages Site ist jetzt vollständig konfiguriert und bereit für automatisches Deployment! 🎉

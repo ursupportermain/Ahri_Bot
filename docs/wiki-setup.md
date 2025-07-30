@@ -24,11 +24,11 @@ Erstelle die folgenden Wiki-Seiten mit den entsprechenden Inhalten:
 
 Empfohlene Sidebar (`_Sidebar.md`):
 ```markdown
-**📚 Akali Bot Wiki**
+**📚 Ahri Bot Wiki**
 
 **🚀 Schnellstart**
 - [Setup Guide](Setup-Guide)
-- [Quick Start](https://github.com/ursupportermain/Akali_Bot#-quick-start)
+- [Quick Start](https://github.com/ursupportermain/Ahri_Bot#-quick-start)
 
 **📖 Anleitungen**
 - [League Patch Notes](League-Patch-Notes)
@@ -36,8 +36,8 @@ Empfohlene Sidebar (`_Sidebar.md`):
 - [Deployment Guide](Deployment)
 
 **🔗 Links**
-- [Repository](https://github.com/ursupportermain/Akali_Bot)
-- [Issues](https://github.com/ursupportermain/Akali_Bot/issues)
+- [Repository](https://github.com/ursupportermain/Ahri_Bot)
+- [Issues](https://github.com/ursupportermain/Ahri_Bot/issues)
 ```
 
 ### 4. Automatische Synchronisation (Optional)

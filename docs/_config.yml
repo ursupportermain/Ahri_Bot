@@ -1,6 +1,6 @@
-title: Akali Bot Documentation
+title: Ahri Bot Documentation
 description: Discord Bot für League of Legends Communities
-baseurl: "/Akali_Bot"
+baseurl: "/Ahri_Bot"
 url: "https://ursupportermain.github.io"
 
 # GitHub Pages / Jekyll settings
@@ -28,8 +28,8 @@ nav_links:
 
 # GitHub metadata
 github:
-  repository_url: https://github.com/ursupportermain/Akali_Bot
-  repository_name: Akali_Bot
+  repository_url: https://github.com/ursupportermain/Ahri_Bot
+  repository_name: Ahri_Bot
   owner_name: ursupportermain
 
 # SEO

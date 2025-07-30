@@ -1,10 +1,10 @@
-# Akali Bot Documentation Site
+# Ahri Bot Documentation Site
 
 Diese Website wird automatisch mit GitHub Pages aus dem `docs/` Ordner generiert.
 
 ## 🌐 Live Site
 
-**URL:** [https://ursupportermain.github.io/Akali_Bot/](https://ursupportermain.github.io/Akali_Bot/)
+**URL:** [https://ursupportermain.github.io/Ahri_Bot/](https://ursupportermain.github.io/Ahri_Bot/)
 
 ## 🏗️ Technologie
 
@@ -47,7 +47,7 @@ bundle install
 bundle exec jekyll serve --watch
 
 # Website öffnen
-open http://localhost:4000/Akali_Bot/
+open http://localhost:4000/Ahri_Bot/
 ```
 
 ### Mit Docker
@@ -64,7 +64,7 @@ docker run --rm -it \
   jekyll serve --watch --force_polling
 
 # Website öffnen
-open http://localhost:4000/Akali_Bot/
+open http://localhost:4000/Ahri_Bot/
 ```
 
 ## 📝 Inhalte bearbeiten
@@ -103,7 +103,7 @@ nav_links:
 
 ### Automatisch (GitHub Actions)
 - Läuft automatisch bei Push auf `main` Branch
-- Deployment-Status: [![Pages](https://github.com/ursupportermain/Akali_Bot/actions/workflows/pages.yml/badge.svg)](https://github.com/ursupportermain/Akali_Bot/actions/workflows/pages.yml)
+- Deployment-Status: [![Pages](https://github.com/ursupportermain/Ahri_Bot/actions/workflows/pages.yml/badge.svg)](https://github.com/ursupportermain/Ahri_Bot/actions/workflows/pages.yml)
 
 ### Manuell
 1. Repository Settings → Pages

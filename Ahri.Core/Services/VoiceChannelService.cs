@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using System.Data.SQLite;
 
-namespace Akali.Core.Services
+namespace Ahri.Core.Services
 {
     public class VoiceChannelService : BackgroundService
     {

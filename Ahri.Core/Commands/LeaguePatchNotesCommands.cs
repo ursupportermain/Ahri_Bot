@@ -3,7 +3,7 @@ using Discord.Interactions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Akali.Core.Commands
+namespace Ahri.Core.Commands
 {
     public class LeaguePatchNotesCommands : InteractionModuleBase<SocketInteractionContext>
     {

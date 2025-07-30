@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  akali-bot:
+  ahri-bot:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: akali-bot
+    container_name: ahri-bot
     restart: unless-stopped
     environment:
       - DOTNET_ENVIRONMENT=Production
@@ -13,7 +13,7 @@ services:
       # DISCORD_TOKEN (required)
       # DISCORD_GUILD_ID (optional)
     networks:
-      - akali-network
+      - ahri-network
     healthcheck:
       test: ["CMD-SHELL", "dotnet --version || exit 1"]
       interval: 30s
@@ -24,21 +24,21 @@ services:
   # Optional: Add a database if needed in the future
   # database:
   #   image: postgres:15-alpine
-  #   container_name: akali-db
+  #   container_name: ahri-db
   #   restart: unless-stopped
   #   environment:
-  #     POSTGRES_DB: akali_bot
-  #     POSTGRES_USER: akali
+  #     POSTGRES_DB: ahri_bot
+  #     POSTGRES_USER: ahri
   #     POSTGRES_PASSWORD: ${DB_PASSWORD}
   #   volumes:
   #     - postgres_data:/var/lib/postgresql/data
   #   networks:
-  #     - akali-network
+  #     - ahri-network
   #   ports:
   #     - "5432:5432"
 
 networks:
-  akali-network:
+  ahri-network:
     driver: bridge
 
 # volumes:

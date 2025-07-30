@@ -4,11 +4,11 @@ title: Home
 nav_order: 1
 ---
 
-# Akali Bot Documentation 🎮
+# Ahri Bot Documentation 🎮
 
-Willkommen zur Dokumentation des Akali Bots - einem Discord Bot für League of Legends Communities!
+Willkommen zur Dokumentation des Ahri Bots - einem Discord Bot für League of Legends Communities!
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/ursupportermain/Akali_Bot)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/ursupportermain/Ahri_Bot)
 [![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![Discord.Net](https://img.shields.io/badge/Discord.Net-3.18.0-7289DA?logo=discord)](https://github.com/discord-net/Discord.Net)
 
@@ -16,8 +16,8 @@ Willkommen zur Dokumentation des Akali Bots - einem Discord Bot für League of L
 
 ```bash
 # Repository klonen
-git clone https://github.com/ursupportermain/Akali_Bot.git
-cd Akali_Bot/Akali.Core
+git clone https://github.com/ursupportermain/Ahri_Bot.git
+cd Ahri_Bot/Ahri.Core
 
 # Bot Token konfigurieren
 dotnet user-secrets set "Discord:Token" "YOUR_BOT_TOKEN"
@@ -90,12 +90,12 @@ LEAGUEPATCHNOTES_ROLEID=your_role_id
 
 ## 🤝 Support
 
-- **[GitHub Issues](https://github.com/ursupportermain/Akali_Bot/issues)** - Bug Reports & Feature Requests
-- **[Discussions](https://github.com/ursupportermain/Akali_Bot/discussions)** - Community Support
+- **[GitHub Issues](https://github.com/ursupportermain/Ahri_Bot/issues)** - Bug Reports & Feature Requests
+- **[Discussions](https://github.com/ursupportermain/Ahri_Bot/discussions)** - Community Support
 
 ## 📄 License
 
-Dieses Projekt steht unter der [MIT License](https://github.com/ursupportermain/Akali_Bot/blob/main/LICENSE).
+Dieses Projekt steht unter der [MIT License](https://github.com/ursupportermain/Ahri_Bot/blob/main/LICENSE).
 
 ---
 

@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  akali-bot:
+  ahri-bot:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: akali-bot-dev
+    container_name: ahri-bot-dev
     restart: "no"
     environment:
       - DOTNET_ENVIRONMENT=Development
@@ -16,10 +16,10 @@ services:
       - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
       - ./logs:/app/logs
     networks:
-      - akali-dev-network
+      - ahri-dev-network
     stdin_open: true
     tty: true
 
 networks:
-  akali-dev-network:
+  ahri-dev-network:
     driver: bridge

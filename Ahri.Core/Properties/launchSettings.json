@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Akali.Core": {
+    "Ahri.Core": {
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"

@@ -1,11 +1,11 @@
-# Akali Bot Wiki 📚
+# Ahri Bot Wiki 📚
 
-Willkommen im Akali Bot Wiki! Hier findest du alle Informationen zur Einrichtung, Konfiguration und Verwendung des Bots.
+Willkommen im Ahri Bot Wiki! Hier findest du alle Informationen zur Einrichtung, Konfiguration und Verwendung des Bots.
 
 ## 🚀 Schnellstart
 
 - **[Setup Guide](SETUP_GUIDE)** - Schritt-für-Schritt Anleitung zur Bot-Einrichtung
-- **[Quick Start README](https://github.com/ursupportermain/Akali_Bot#-quick-start)** - Sofort loslegen
+- **[Quick Start README](https://github.com/ursupportermain/Ahri_Bot#-quick-start)** - Sofort loslegen
 
 ## 📖 Dokumentation
 
@@ -58,7 +58,7 @@ Wenn du Hilfe brauchst:
 
 1. **[Setup Guide](SETUP_GUIDE)** durchlesen 
 2. **[Troubleshooting](SETUP_GUIDE#-troubleshooting)** Abschnitt prüfen
-3. **[Issues](https://github.com/ursupportermain/Akali_Bot/issues)** auf GitHub erstellen
+3. **[Issues](https://github.com/ursupportermain/Ahri_Bot/issues)** auf GitHub erstellen
 4. **Discord Server** beitreten (falls verfügbar)
 
 ## 🔗 Externe Links

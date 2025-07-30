@@ -36,7 +36,7 @@
 ### 📁 Neue Struktur:
 
 ```
-Akali_Bot/
+Ahri_Bot/
 ├── 📄 README.md              # Überarbeitete Hauptdokumentation
 ├── 📁 docs/                  # Alle Dokumentation
 │   ├── 📄 wiki-home.md       # GitHub Wiki Startseite
@@ -45,7 +45,7 @@ Akali_Bot/
 │   ├── 📄 LEAGUE_PATCH_NOTES.md # Patch Notes Feature
 │   ├── 📄 DOCKER.md          # Docker Deployment
 │   └── 📄 DEPLOYMENT.md      # Deployment Guide
-├── 📁 Akali.Core/            # Bot Code
+├── 📁 Ahri.Core/            # Bot Code
 └── ...
 ```
 

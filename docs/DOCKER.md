@@ -41,12 +41,12 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```bash
 # Run with environment variables directly
 docker run -d \
-  --name akali-bot \
+  --name ahri-bot \
   -e DISCORD_TOKEN="your_token" \
   -e DISCORD_GUILD_ID="your_guild_id" \
   -e DOTNET_ENVIRONMENT="Production" \
   --restart unless-stopped \
-  akali-bot:latest
+  ahri-bot:latest
 ```
 
 ### Option 3: Docker Compose
@@ -100,7 +100,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 docker-compose logs -f
 
 # Restart bot
-docker-compose restart akali-bot
+docker-compose restart ahri-bot
 
 # Update and restart
 docker-compose pull && docker-compose up -d
@@ -122,7 +122,7 @@ docker-compose ps
 ### Bot won't start
 1. Check your `.env` file has the correct Discord token
 2. Verify the token has proper permissions
-3. Check logs: `docker-compose logs akali-bot`
+3. Check logs: `docker-compose logs ahri-bot`
 
 ### Permission denied errors
 ```bash

@@ -4,7 +4,7 @@ using Discord.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
 
-namespace Akali.Core.Commands
+namespace Ahri.Core.Commands
 {
     [Group("voice", "Voice Channel Management")]
     public class VoiceCommands : InteractionModuleBase<SocketInteractionContext>
@@ -398,7 +398,7 @@ namespace Akali.Core.Commands
                 .AddField("⚙️ Channel Settings", "`/voice name <name>` - Ändert Channel Namen\n`/voice limit <zahl>` - Setzt Benutzerlimit", false)
                 .AddField("👑 Ownership", "`/voice claim` - Übernimmt Channel wenn Owner weg ist", false)
                 .WithTimestamp(DateTimeOffset.Now)
-                .WithFooter("Akali Bot Voice System")
+                .WithFooter("Ahri Bot Voice System")
                 .Build();
 
             await RespondAsync(embed: embed, ephemeral: true);

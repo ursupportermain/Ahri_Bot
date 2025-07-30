@@ -6,20 +6,20 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy project file first for better layer caching
-COPY ["Akali.Core/Akali.Core.csproj", "Akali.Core/"]
-RUN dotnet restore "Akali.Core/Akali.Core.csproj"
+COPY ["Ahri.Core/Ahri.Core.csproj", "Ahri.Core/"]
+RUN dotnet restore "Ahri.Core/Ahri.Core.csproj"
 
 # Copy all source files
-COPY Akali.Core/ Akali.Core/
-WORKDIR "/src/Akali.Core"
+COPY Ahri.Core/ Ahri.Core/
+WORKDIR "/src/Ahri.Core"
 
 # Build the application
-RUN dotnet build "Akali.Core.csproj" -c Release -o /app/build
+RUN dotnet build "Ahri.Core.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Akali.Core.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Ahri.Core.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Akali.Core.dll"]
+ENTRYPOINT ["dotnet", "Ahri.Core.dll"]

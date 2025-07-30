@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace Akali.Core.Services
+namespace Ahri.Core.Services
 {
     public class LeaguePatchNotesService : BackgroundService
     {

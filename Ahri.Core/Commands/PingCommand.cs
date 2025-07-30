@@ -1,7 +1,7 @@
 using Discord;
 using Discord.Interactions;
 
-namespace Akali.Core.Commands
+namespace Ahri.Core.Commands
 {
     public class SlashCommandHandler : InteractionModuleBase<SocketInteractionContext>
     {

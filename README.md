@@ -1,4 +1,4 @@
-# Akali Bot 🎮
+# Ahri Bot 🎮
 
 Ein Discord Bot für League of Legends Communities, entwickelt mit .NET 9 und Discord.Net.
 
@@ -20,8 +20,8 @@ Ein Discord Bot für League of Legends Communities, entwickelt mit .NET 9 und Di
 ### Entwicklung
 ```bash
 # Repository klonen
-git clone https://github.com/ursupportermain/Akali_Bot.git
-cd Akali_Bot/Akali.Core
+git clone https://github.com/ursupportermain/Ahri_Bot.git
+cd Ahri_Bot/Ahri.Core
 
 # Bot Token konfigurieren
 dotnet user-secrets set "Discord:Token" "YOUR_BOT_TOKEN"
@@ -71,8 +71,8 @@ Alle detaillierten Anleitungen finden Sie im [`docs/`](docs/) Ordner:
 ## 🏗️ Projektstruktur
 
 ```
-Akali_Bot/
-├── 📁 Akali.Core/           # Hauptprojekt
+Ahri_Bot/
+├── 📁 Ahri.Core/           # Hauptprojekt
 │   ├── 📁 Commands/         # Slash Command Implementierungen
 │   ├── 📁 Services/         # Background Services
 │   └── 📄 Program.cs        # Application Entry Point

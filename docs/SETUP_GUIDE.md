@@ -5,9 +5,9 @@ nav_order: 2
 permalink: /setup-guide/
 ---
 
-# Akali Bot - Setup Guide 🛠️
+# Ahri Bot - Setup Guide 🛠️
 
-Schritt-für-Schritt Anleitung zur Einrichtung des Akali Bots.
+Schritt-für-Schritt Anleitung zur Einrichtung des Ahri Bots.
 
 ## 🚀 So richtest du die League Patch Notes Funktion ein:
 

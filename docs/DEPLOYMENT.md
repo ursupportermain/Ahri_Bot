@@ -11,7 +11,7 @@ permalink: /deployment/
 
 ### Recommended: User Secrets
 ```bash
-cd Akali.Core
+cd Ahri.Core
 
 # Set bot token (secure, not committed to git)
 dotnet user-secrets set "Discord:Token" "your_bot_token_here"
@@ -68,8 +68,8 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 1. **Clone** repository on your server:
    ```bash
-   git clone https://github.com/ursupportermain/Akali_Bot.git
-   cd Akali_Bot
+   git clone https://github.com/ursupportermain/Ahri_Bot.git
+   cd Ahri_Bot
    ```
 
 2. **Set** environment variables:
@@ -85,23 +85,23 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 4. **Monitor** logs:
    ```bash
-   docker-compose logs -f akali-bot
+   docker-compose logs -f ahri-bot
    ```
 
 ### Option 4: Manual Docker Build
 
 ```bash
 # Build image
-docker build -t akali-bot .
+docker build -t ahri-bot .
 
 # Run container
 docker run -d \
-  --name akali-bot \
+  --name ahri-bot \
   -e DISCORD_TOKEN="your_token" \
   -e DISCORD_GUILD_ID="your_guild_id" \
   -e DOTNET_ENVIRONMENT="Production" \
   --restart unless-stopped \
-  akali-bot
+  ahri-bot
 ```
 
 ---
@@ -147,14 +147,14 @@ git pull && docker-compose up --build -d
 ```bash
 # Docker Compose
 docker-compose ps
-docker-compose logs -f akali-bot
+docker-compose logs -f ahri-bot
 
 # Railway
 # Check logs in Railway dashboard
 
 # Manual Docker
 docker ps
-docker logs akali-bot -f
+docker logs ahri-bot -f
 ```
 
 ### Health checks

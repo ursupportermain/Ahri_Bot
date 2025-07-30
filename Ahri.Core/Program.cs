@@ -1,4 +1,4 @@
-﻿using Akali.Core.Services;
+﻿using Ahri.Core.Services;
 using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +47,7 @@ builder.Services.AddLogging(logging =>
 
 var app = builder.Build();
 
-Console.WriteLine("Starting Akali Bot...");
+Console.WriteLine("Starting Ahri Bot...");
 
 try
 {

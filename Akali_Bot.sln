@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akali.Core", "Akali.Core\Akali.Core.csproj", "{33EBDA90-39E5-8883-00C0-B093D5FC892E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahri.Core", "Ahri.Core\Ahri.Core.csproj", "{33EBDA90-39E5-8883-00C0-B093D5FC892E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
