@@ -18,6 +18,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("test-patchnotes", "Teste die Patch Notes Benachrichtigung")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task TestPatchNotesAsync()
         {
             var embed = new EmbedBuilder()
@@ -39,6 +40,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("service-status", "Zeigt den Status aller Bot-Services an")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task ServiceStatusAsync()
         {
             var embed = new EmbedBuilder()
@@ -57,6 +59,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("server-info", "Zeigt Informationen über den aktuellen Server an")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task ServerInfoAsync()
         {
             var guild = Context.Guild;
@@ -87,6 +90,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("user-info", "Zeigt Informationen über einen Benutzer an")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task UserInfoAsync([Summary("user", "Der Benutzer, über den Informationen angezeigt werden sollen")] IUser? user = null)
         {
             var targetUser = user ?? Context.User;
@@ -125,6 +129,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("clear-messages", "Löscht eine bestimmte Anzahl von Nachrichten")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task ClearMessagesAsync([Summary("amount", "Anzahl der zu löschenden Nachrichten (1-100)")] int amount)
         {
             if (amount < 1 || amount > 100)
@@ -170,6 +175,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("announce", "Sendet eine Ankündigung in den aktuellen Kanal")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task AnnounceAsync([Summary("title", "Titel der Ankündigung")] string title, 
                                       [Summary("message", "Nachricht der Ankündigung")] string message,
                                       [Summary("color", "Farbe der Ankündigung (rot, grün, blau, orange, lila)")] string color = "blau")
@@ -199,6 +205,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("bot-stats", "Zeigt Bot-Statistiken an")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task BotStatsAsync()
         {
             var client = Context.Client as DiscordSocketClient;
@@ -231,6 +238,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("set-status", "Ändert den Status des Bots")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task SetStatusAsync([Summary("activity", "Aktivitätstyp")] string activity,
                                        [Summary("text", "Status Text")] string text,
                                        [Summary("status", "Online Status (online, idle, dnd, invisible)")] string status = "online")
@@ -271,6 +279,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("reload-commands", "Lädt alle Slash Commands neu")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task ReloadCommandsAsync()
         {
             await RespondAsync("🔄 Lade Commands neu...", ephemeral: true);
