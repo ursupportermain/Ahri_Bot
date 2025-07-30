@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace Ahri.Core.Commands
 {
     [Group("voice", "Voice Channel Management")]
+    [RequireUserPermission(GuildPermission.Administrator)]
     public class VoiceCommands : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly ILogger<VoiceCommands> _logger;
