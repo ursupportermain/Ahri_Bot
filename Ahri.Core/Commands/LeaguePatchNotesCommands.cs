@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Ahri.Core.Commands
 {
+    [RequireUserPermission(GuildPermission.Administrator)]
+    [DefaultMemberPermissions(GuildPermission.Administrator)]
     public class LeaguePatchNotesCommands : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly IConfiguration _configuration;
@@ -17,6 +19,7 @@ namespace Ahri.Core.Commands
         }
 
         [SlashCommand("patchnotes", "Verwalte League of Legends Patch Notes Benachrichtigungen")]
+        [RequireUserPermission(GuildPermission.Administrator)]
         public async Task PatchNotesCommand(
             [Summary("action", "Die Aktion die ausgeführt werden soll")]
             [Choice("Status anzeigen", "status")]

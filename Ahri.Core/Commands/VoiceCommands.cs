@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace Ahri.Core.Commands
 {
     [Group("voice", "Voice Channel Management")]
+    [RequireUserPermission(GuildPermission.Administrator)]
     public class VoiceCommands : InteractionModuleBase<SocketInteractionContext>
     {
         private readonly ILogger<VoiceCommands> _logger;
@@ -66,6 +67,7 @@ namespace Ahri.Core.Commands
 
         [SlashCommand("setup", "Richtet das Voice Channel System ein")]
         [RequireUserPermission(GuildPermission.Administrator)]
+        [DefaultMemberPermissions(GuildPermission.Administrator)]
         public async Task SetupAsync([Summary("category-name", "Name der Kategorie für Voice Channels")] string categoryName,
                                    [Summary("channel-name", "Name des Join-to-Create Channels")] string channelName)
         {
