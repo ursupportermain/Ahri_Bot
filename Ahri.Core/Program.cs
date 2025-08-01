@@ -23,7 +23,8 @@ builder.Services.AddSingleton<DiscordSocketClient>(provider =>
         GatewayIntents = GatewayIntents.Guilds | 
                         GatewayIntents.GuildMessages | 
                         GatewayIntents.MessageContent |
-                        GatewayIntents.GuildMembers,
+                        GatewayIntents.GuildMembers |
+                        GatewayIntents.GuildVoiceStates,
         LogLevel = LogSeverity.Info,
         MessageCacheSize = 100
     };
@@ -35,7 +36,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddHostedService<DiscordService>();
 builder.Services.AddHostedService<LeaguePatchNotesService>();
-// builder.Services.AddHostedService<VoiceChannelService>(); // Temporarily disabled for Docker build
+builder.Services.AddHostedService<VoiceChannelService>();
 
 // Add logging
 builder.Services.AddLogging(logging =>

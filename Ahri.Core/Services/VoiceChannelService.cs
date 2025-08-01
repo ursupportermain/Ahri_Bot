@@ -19,19 +19,69 @@ namespace Ahri.Core.Services
         {
             _client = client;
             _logger = logger;
+            InitializeDatabase();
+        }
+
+        private void InitializeDatabase()
+        {
+            using var connection = new SQLiteConnection($"Data Source={DatabasePath}");
+            connection.Open();
+
+            string createGuildTable = @"
+                CREATE TABLE IF NOT EXISTS guild (
+                    guildID INTEGER PRIMARY KEY,
+                    ownerID INTEGER,
+                    voiceChannelID INTEGER,
+                    voiceCategoryID INTEGER
+                )";
+
+            string createVoiceChannelTable = @"
+                CREATE TABLE IF NOT EXISTS voiceChannel (
+                    userID INTEGER PRIMARY KEY,
+                    voiceID INTEGER
+                )";
+
+            string createUserSettingsTable = @"
+                CREATE TABLE IF NOT EXISTS userSettings (
+                    userID INTEGER PRIMARY KEY,
+                    channelName TEXT,
+                    channelLimit INTEGER
+                )";
+
+            string createGuildSettingsTable = @"
+                CREATE TABLE IF NOT EXISTS guildSettings (
+                    guildID INTEGER PRIMARY KEY,
+                    defaultChannelName TEXT,
+                    channelLimit INTEGER
+                )";
+
+            using var command = new SQLiteCommand(createGuildTable, connection);
+            command.ExecuteNonQuery();
+
+            command.CommandText = createVoiceChannelTable;
+            command.ExecuteNonQuery();
+
+            command.CommandText = createUserSettingsTable;
+            command.ExecuteNonQuery();
+
+            command.CommandText = createGuildSettingsTable;
+            command.ExecuteNonQuery();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _logger.LogInformation("VoiceChannelService starting...");
+            
             // Wait for the client to be ready
             while (_client.ConnectionState != ConnectionState.Connected)
             {
+                _logger.LogInformation("Waiting for Discord client to connect... Current state: {State}", _client.ConnectionState);
                 await Task.Delay(1000, stoppingToken);
                 if (stoppingToken.IsCancellationRequested) return;
             }
 
             _client.UserVoiceStateUpdated += HandleVoiceStateUpdate;
-            _logger.LogInformation("VoiceChannelService started");
+            _logger.LogInformation("VoiceChannelService started and event handler registered");
 
             // Keep the service running
             try
@@ -50,6 +100,9 @@ namespace Ahri.Core.Services
         {
             try
             {
+                _logger.LogInformation("Voice state update: User {User} moved from {Before} to {After}", 
+                    user.Username, before.VoiceChannel?.Name ?? "null", after.VoiceChannel?.Name ?? "null");
+
                 if (user is not SocketGuildUser guildUser) return;
 
                 var guild = guildUser.Guild;
@@ -58,11 +111,19 @@ namespace Ahri.Core.Services
 
                 // Get guild voice configuration
                 var voiceConfig = GetGuildVoiceConfig(guildId);
-                if (voiceConfig == null) return;
+                if (voiceConfig == null) 
+                {
+                    _logger.LogInformation("No voice config found for guild {Guild}", guild.Name);
+                    return;
+                }
+
+                _logger.LogInformation("Voice config found - Join Channel: {JoinChannel}, Category: {Category}", 
+                    voiceConfig.VoiceChannelId, voiceConfig.VoiceCategoryId);
 
                 // Handle joining the "Join to Create" channel
                 if (after.VoiceChannel?.Id == voiceConfig.VoiceChannelId)
                 {
+                    _logger.LogInformation("User {User} joined the Join-to-Create channel", user.Username);
                     await HandleJoinToCreate(guildUser, voiceConfig);
                 }
 
